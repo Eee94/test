@@ -7,18 +7,14 @@ interface Props {
 
 const { title,description,image } = Astro.props;
 
-import Home from "../components/Home.astro";
+import Kotoba from "../components/Kotoba.astro";
 import Header from "../components/Header.astro";
 import Back from "../components/Back.astro";
 import Footer from "../components/Footer.astro";
 
-
-
 import '@fontsource/shippori-mincho';
 
-
 ---
-
 <!doctype html>
 <html lang="ja">
 	<head>
@@ -36,23 +32,25 @@ import '@fontsource/shippori-mincho';
 		<title></title>
 		<meta name="description" content="" />
 		<meta name="format-detection" content="telephone=no" />
-	
+
 		<link rel="icon" href="/star2.png">
 		<link rel="apple-touch-icon" href="/star.png" sizes="180x180">
 
-		<meta name="thumbnail" content="/hane.webp" />
 
 
 
+		
 		<title>{title}</title>
 	</head>
 	
-	<body>
-        <Header />
-        <Home />
-
-<Back />
-<Footer />
+	
+    <body>
+    
+    <Header />
+    <Kotoba />
+    <Back />
+    <Footer />
+    
 		<slot />
 	</body>
 </html>

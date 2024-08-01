@@ -1,0 +1,133 @@
+
+<nav class="sticky">
+    <div class="nav-content">
+      <div class="logo">
+        <a href="/"></a>
+        
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/story">体験記</a></li>
+        <li><a href="/seminar">セミナー</a></li>
+        <li><a href="/contact">ご予約</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <style>
+  
+  @media print, screen and (min-width: 1900px)  {
+    .nav-links li a {
+   
+      color: #3A3226;
+      font-size: 1.55rem;
+    
+      }
+  }
+  
+        .c-singlePager {
+            position: relative;
+            font-size: 20px;
+            font-family: 'Shippori Mincho', sans-serif;
+            margin: 50px 40px 80px;
+            padding: 0 0 10px;
+        }
+        
+        .c-singlePager_arrow-prev {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .c-singlePager_arrow-next {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+  
+  
+  
+  
+  nav {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 1; /* z-indexで最前面に持ってくる */
+      box-shadow: 0 5px 10px #0000001a;
+      width: 100%;
+  
+      font-family: "Shippori Mincho",sans-serif;
+  
+  
+    overflow: hidden;
+    position: fixed;
+  
+  
+    }
+   
+  
+  
+    nav .nav-content {
+      max-width: 1980px;
+      width: 100%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; 
+       }
+  
+    nav .logo a {
+      font-weight: 500;
+      font-size: 1.05rem;
+      color:#3A3226;
+      
+      text-decoration: none;
+  
+    }
+  
+    .nav-content .nav-links {
+      display: flex;
+      padding-right: 20px;
+    }
+  
+  
+    
+    .nav-content .nav-links li {
+      list-style: none;
+      margin: 0 8px;
+    }
+  
+    .nav-links li a {
+      text-decoration: none;
+      color:#3A3226;
+  
+      font-weight: 500;
+      padding: 10px 4px;
+      transition: all 0.3s ease;
+      line-height: 2.6176470588;
+        letter-spacing: .084em;
+        gap:3.125rem;
+        font-family: "Shippori Mincho",sans-serif;
+  
+    }
+  
+    .nav-links li a:hover {
+      color: #0e2431;
+      border-bottom:1px solid black;
+    }
+  
+  
+    @media print, screen and (max-width: 767px) {
+      .nav-links li a {
+        width: 100%;
+        text-align: center;
+        font-size: 0.98rem;
+        padding: 0px 0px;
+      }
+      nav[data-astro-cid-3ef6ksr2] .logo[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{
+        font-size: 0.98rem;
+      }
+  
+    }
+  
+  </style>

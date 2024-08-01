@@ -7,12 +7,10 @@ interface Props {
 
 const { title,description,image } = Astro.props;
 
-import Home from "../components/Home.astro";
+import Contact from "../components/Contact.astro";
 import Header from "../components/Header.astro";
 import Back from "../components/Back.astro";
 import Footer from "../components/Footer.astro";
-
-
 
 import '@fontsource/shippori-mincho';
 
@@ -40,19 +38,18 @@ import '@fontsource/shippori-mincho';
 		<link rel="icon" href="/star2.png">
 		<link rel="apple-touch-icon" href="/star.png" sizes="180x180">
 
-		<meta name="thumbnail" content="/hane.webp" />
-
-
 
 		<title>{title}</title>
 	</head>
 	
-	<body>
-        <Header />
-        <Home />
-
-<Back />
-<Footer />
+	
+    <body>
+    
+    <Header />
+    <Contact />
+    <Back />
+    <Footer />
+    
 		<slot />
 	</body>
 </html>
