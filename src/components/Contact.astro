@@ -42,12 +42,11 @@
         <select name="other" class="form-control" >
             <option value="" disabled selected>選択してください</option>
             <option value="パワーストーン郵送">パワーストーン郵送</option>    
-            <option value="見学ご希望の方">セミナーの見学ご希望の方</option> 
+            <option value="見学ご希望の方">セミナーの見学</option> 
    
           </select>
 
           <input type="hidden" id="recaptchaToken" name="googleReCaptchaToken" />
-
       <label class="Home_Contact_Label__hwNpu"  for="message">お問い合わせ内容</label>
       <textarea class="Home_Contact_Textarea__iUa5y" id="message" name="message" rows="5" required="required"> </textarea>
       <button type="submit" class="Home_Contact_Button__sfQX_">送信する</button>
@@ -62,49 +61,18 @@
   is:inline
   src="https://www.google.com/recaptcha/api.js?render=6LeDqkgqAAAAABK7DQ8O72uq27bmLZ1M7jPTiWue&hl=ja"
 ></script>
+
 <script>
-  const form = document.getElementById('form')
-  form?.addEventListener('submit', submitFormData)
-
-  function submitFormData(event: Event) {
-    event.preventDefault()
-    grecaptcha.ready(() => {
+    grecaptcha.ready(function () {
       grecaptcha
-        .execute('6LeDqkgqAAAAABK7DQ8O72uq27bmLZ1M7jPTiWue', { action: 'submit' })
-        .then(async (token) => {
-          const target = event.target as typeof event.target & {
-            name: { value: string }
-            email: { value: string }
-            message: { value: string }
-          }
+        .execute("6LeDqkgqAAAAABK7DQ8O72uq27bmLZ1M7jPTiWue", { action: "homepage" })
+        .then(function (token) {
+          document.getElementById("recaptchaToken").value = token;
+        });
+    });
+  </script>
 
-          const data = {
-            name: target.name.value,
-            email: target.email.value,
-            message: target.message.value,
-            googleReCaptchaToken: token,
-          }
 
-          const formData = new FormData()
-          Object.entries(data).forEach(([key, value]) => {
-            formData.append(key, value)
-          })
-
-          await sendRequest(formData)
-        })
-    })
-  }
-
-  async function sendRequest(formData: FormData) {
-    return await fetch('https://okna.form.newt.so/v1/K9eg399X3', {
-      method: 'POST',
-      body: formData,
-      headers: {
-        Accept: 'application/json',
-      },
-    })
-  }
-</script>
 
 
  
