@@ -57,10 +57,56 @@
 </div>
 
   
+<script
+  is:inline
+  src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key&hl=ja"
+></script>
+<script>
+  const form = document.getElementById('form')
+  form?.addEventListener('submit', submitFormData)
+
+  function submitFormData(event: Event) {
+    event.preventDefault()
+    grecaptcha.ready(() => {
+      grecaptcha
+        .execute('6LeDqkgqAAAAABK7DQ8O72uq27bmLZ1M7jPTiWue', { action: 'submit' })
+        .then(async (token) => {
+          const target = event.target as typeof event.target & {
+            name: { value: string }
+            email: { value: string }
+            message: { value: string }
+          }
+
+          const data = {
+            name: target.name.value,
+            email: target.email.value,
+            message: target.message.value,
+            googleReCaptchaToken: token,
+          }
+
+          const formData = new FormData()
+          Object.entries(data).forEach(([key, value]) => {
+            formData.append(key, value)
+          })
+
+          await sendRequest(formData)
+        })
+    })
+  }
+
+  async function sendRequest(formData: FormData) {
+    return await fetch('https://okna.form.newt.so/v1/K9eg399X3', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+      },
+    })
+  }
+</script>
 
 
-
-
+ 
 <style>
 
 .stripe-marker {
