@@ -59,9 +59,8 @@
 <script>
 function _turnstileCb() {
     turnstile.render('.cf-turnstile', {
-        callback: function(token) {
-            console.log('ok!')
-            console.log(token);
+        callback: function() {
+            document.querySelector("button[type='submit']").removeAttribute('disabled');
         },
     })
 }
