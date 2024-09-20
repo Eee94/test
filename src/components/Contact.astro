@@ -1,6 +1,4 @@
 
-
-
 <main class="Layout_Main__dLHqI">
     <div class="Home_Contact__nbvJ6">
     <h1 class="Home_Contact_Title__KdAFZ">お問い合わせ・ご予約について</h1>
@@ -49,26 +47,9 @@
     <textarea class="Home_Contact_Textarea__iUa5y" id="message" name="message" rows="5" required="required"></textarea>
 <center>
    
-    <button type="submit"disabled  class="Home_Contact_Button__sfQX_">送信する</button>
-    <div class="cf-turnstile" data-sitekey="0x4AAAAAAAWW8rxDB2ukfkEk"></div>
+    <button type="submit" class="Home_Contact_Button__sfQX_">送信する</button>
   </form>
 
-
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileCb" async defer></script>
-
-<script>
-function _turnstileCb() {
-    turnstile.render('.cf-turnstile', {
-        callback: function() {
-            document.querySelector("button[type='submit']").removeAttribute('disabled');
-        },
-    })
-}
-</script>
-
-
-
- 
 <style>
 
 .stripe-marker {
