@@ -1,6 +1,8 @@
 
 
-
+<head>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+</head>
 
 
 <main class="Layout_Main__dLHqI">
@@ -22,8 +24,7 @@
     <p class="Home_Contact_Text__3D7zy">ご予約・お問い合わせは以下のフォームよりお送りください。
     </p>
     
-    <!-- Turnstile Integration -->
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  </form>
 
 <form id="form" method="post" action="https://okan.form.newt.so/v1/QrG7n2oZ6">
     <label class="Home_Contact_Label__hwNpu" for="name">氏名</label>
@@ -49,38 +50,29 @@
         <option value="パワーストーン郵送">パワーストーン郵送</option>
         <option value="見学ご希望の方">セミナーの見学</option>
     </select>
-
     <label class="Home_Contact_Label__hwNpu" for="message">お問い合わせ内容</label>
     <textarea class="Home_Contact_Textarea__iUa5y" id="message" name="message" rows="5" required="required"></textarea>
 <center>
-    <!-- Cloudflare Turnstile Widget -->
-    <div class="cf-turnstile" data-sitekey="0x4AAAAAAAWW8rxDB2ukfkEk"></div></center>
-    
-    <button type="submit" class="Home_Contact_Button__sfQX_">送信する</button>
+   
+    <button type="submit" id="submit" disabled  class="Home_Contact_Button__sfQX_">送信する</button>
+    <div id="turnstileWidget"></div>    
 </form>
 
-<script>
-export const onRequestPost = [
-  turnstilePlugin({
-    // This is the demo secret key. In prod, we recommend you store
-    // your secret key(s) safely.
-    secret: "0x4AAAAAAAWW8n98f3umGGjoviqRRYRlBvo",
-  }),
-  // Alternatively, this is how you can use a secret key which has been stored as an environment variable
-  // (async (context) => {
-  //   return turnstilePlugin({secret: context.env.SECRET_KEY})(context)
-  // }),
-  async (context) => {
-    // Request has been validated as coming from a human
-    const formData = await context.request.formData();
-    // Additional solve metadata data is available at context.data.turnstile
-    return new Response(
-      `Successfully verified! ${JSON.stringify(context.data.turnstile)}`,
-    );
-  },
-];
-</script>
 
+<script>
+
+  window.onloadTurnstileCallback = function () {
+      turnstile.render('#turnstileWidget', {
+          sitekey: '0x4AAAAAAAWW8rxDB2ukfkEk',
+          theme: 'auto',
+          language: 'ja',
+          callback: function (token) {
+              document.getElementById('submit').disabled = false;
+              console.log(`Challenge Success. Token === ${token}`);
+          },
+      });
+  }
+</script>
 
 
 
